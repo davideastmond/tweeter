@@ -17,16 +17,19 @@ html {
 body {
   margin: 0;
   color: #244751;
-  background-color: #eee;
+  background-color: black;
   font-family: 'Roboto', sans-serif;
 }
 
 main {
   width: 450px;
+  padding-top: 1%;
   background-color: white;
   margin-left: 30%;
   margin-right: 30%;
+  
   align-content: center;
+  text-align: center;
 }
 
 /*

@@ -1,1 +1,14 @@
-/* nav-related CSS stylings
+/* nav-related CSS stylings */
+
+#nav-bar {
+  background-color: #00a087;
+  color: #e8fdff;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+#nav-bar .header {
+  width: 100%;
+  position: relative;
+  height: 80px;
+  font-size: 40px;
+}

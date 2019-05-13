@@ -21,6 +21,14 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+main {
+  width: 450px;
+  background-color: white;
+  margin-left: 30%;
+  margin-right: 30%;
+  align-content: center;
+}
+
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */

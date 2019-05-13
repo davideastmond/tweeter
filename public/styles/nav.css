@@ -5,10 +5,19 @@
   color: #e8fdff;
   padding-left: 2em;
   padding-right: 2em;
+  height: 80px;
+  width: 100%;
 }
 #nav-bar .header {
-  width: 100%;
   position: relative;
+  font-size: 2em;
+  padding-left: 10px;
+  line-height: 80px;
+  float: left;
+}
+
+#nav-bar .logo {
   height: 80px;
-  font-size: 40px;
+  width: 80px;
+  float: left;
 }

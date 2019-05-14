@@ -1,11 +1,9 @@
-.article .tweet {
-  background-color: salmon;
-}
 
 .tweet-container {
   background-color: whitesmoke;
   border-radius: 3px;
-  
+  padding: .5em;
+  height: auto;
 }
 .tweet .header {
   display: inline-block;
@@ -31,4 +29,9 @@
   border: solid 1px black;
   border-radius: 3px;
   float: left;
+}
+
+.footer {
+  background-color: cornsilk;
+  height: 2em;
 }

@@ -35,7 +35,13 @@
   resize: none;
 }
 
+.footer {
+  background-color: azure;
+}
+
+.footer .tweet-date {
+  float: left;
+}
 .container h2 {
   margin: 1px;
-  
 }

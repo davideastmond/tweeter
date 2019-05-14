@@ -5,20 +5,21 @@
 const maxTweetLength = 140; // Default is 140 
 
 $(document).ready(function() {
-  /** Code to be executed when DOM is fully loaded */
-  
-  // Bind event handler and increment the character counter as user types / deletes
-  $("#tweet-text").on('keyup', function (e) {
-    let area  = document.getElementById('tweet-text');
-    let b = document.getElementsByClassName("counter");
-
-    if (area.value.length <= maxTweetLength ) {
-      b[0].innerHTML = area.value.length;
-      b[0].removeAttribute("id");
+  /** Code to be executed when DOM is fully loaded
+   Bind event handler and increment the character counter as user types / deletes
+   characters
+  */
+  $("#tweet-text").on('keyup', function() {
+    const textArea = $("#tweet-text");
+    const counterElement = $(".counter");
+    if (textArea.val().length < maxTweetLength) {
+      counterElement.html(maxTweetLength - textArea.val().length);
+      counterElement.removeClass("too-long");
     } else {
-      b[0].setAttribute('id', 'too-long');
-      b[0].innerHTML = maxTweetLength - area.value.length;
-      console.log("attribute set");
+      counterElement.html(maxTweetLength - textArea.val().length);
+      counterElement.addClass("too-long");
     }
   })
+
+
 });

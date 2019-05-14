@@ -31,7 +31,18 @@
   float: left;
 }
 
+.tweet:hover .hover-float {
+  display: block;
+}
+
+.footer .flags {
+  height: 4em;
+  width: 5em;
+  object-fit: contain;
+  display: none;
+}
 .footer {
   background-color: cornsilk;
   height: 2em;
+  padding: 1.5px;
 }

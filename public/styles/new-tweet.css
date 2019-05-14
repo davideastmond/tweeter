@@ -29,6 +29,9 @@
   margin-bottom: 1em;
 }
 
+.flags {
+  float: right;
+}
 .new-tweet textarea {
   width: 99%;
   padding: 5px 5px;

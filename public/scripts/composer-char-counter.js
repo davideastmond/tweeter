@@ -20,6 +20,4 @@ $(document).ready(function() {
       counterElement.addClass("too-long");
     }
   })
-
-
 });

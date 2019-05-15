@@ -65,7 +65,7 @@ $(document).ready(function() {
     e.preventDefault();
    
     if ($("#tweet-text").val().length > maxTweetLength || $("#tweet-text").val().length === 0) {
-      console.log("Error with input");
+      alert("Please enter text to tweet.");
     } else {
       // Tweet text should be fine. Complete a post request using AJAX
       $.ajax({

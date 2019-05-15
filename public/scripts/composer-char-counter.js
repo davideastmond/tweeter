@@ -64,22 +64,24 @@ $(document).ready(function() {
     */
     e.preventDefault();
    
-    if ($("#tweet-text").val().length > maxTweetLength || $("#tweet-text").val().length === 0) {
-      alert("Please enter text to tweet.");
-    } else {
-      // Tweet text should be fine. Complete a post request using AJAX
-      
-      $.ajax({
-        type: "POST", 
-        url: "/tweets",
-        data: $(this).serialize(),
-        success: function (data) {
-          console.log("Response ", data);
-        }
-      })
+    if ($("#tweet-text").val().length > maxTweetLength) {
+      alert("The length of your tweet must be 140 chars or less.");
+      return;
+    }
+    if ($("#tweet-text").val().length === 0) {
+      alert("Please enter tweet text; this field cannot be empty");
+      return;
     }
     
-
+    // passed validation, the form will submit
+    $.ajax({
+      type: "POST", 
+      url: "/tweets",
+      data: $(this).serialize(),
+      success: function (data) {
+        console.log("Response ", data);
+      }
+    })
   });
   
 });

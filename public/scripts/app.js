@@ -11,7 +11,6 @@ The tweet data object that the function will take will have all the necessary tw
 
 $(document).ready(function() {
   function createTweetElement (fromData) {
-    
     // Create Tweet body (article)
     const $tweet = $("<article>");
     $tweet.empty(); 
@@ -25,10 +24,6 @@ $(document).ready(function() {
     const $avatar = $("<img>");
     $avatar.addClass("avatar")
     $avatar.attr('src', fromData.user.avatars.small);
-
-    
-    const $largeImageLink = $("<a>").attr('href', fromData.user.avatars.large);
-    $avatar.wrap($largeImageLink);
       
     // display name
     const $displayName = $("<h2>", {text: `${fromData.user.name}`});
@@ -65,52 +60,6 @@ $(document).ready(function() {
     return $tweet;
   }
   
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": {
-          "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-          "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-          "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": {
-          "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-          "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-          "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-        },
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    },
-    {
-      "user": {
-        "name": "Johann von Goethe",
-        "avatars": {
-          "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        "handle": "@johann49"
-      },
-      "content": {
-        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      "created_at": 1461113796368
-    }
-  ];
   function renderTweets(arrObjTweets) {
     /**
      This function can be responsible for taking in an array of tweet objects and then appending each one to the #tweets-container.
@@ -118,13 +67,9 @@ $(document).ready(function() {
 
     $("#tweet-container").empty();
     for (let tweetElement of arrObjTweets) {
-     
       $individualTweet = createTweetElement(tweetElement);
-     
       $("#tweet-container").append($individualTweet);
     }
   }
-
-  renderTweets(data);
 });
 

@@ -10,7 +10,9 @@ $(document).ready(function() {
    characters.
 
    I made three event handlers to capture the quirky issues that happen
-   when copying and pasting text into the form textarea 
+   when copying and pasting text into the form textarea.
+
+   Please also note the tweet button will disable if the tweet exceeds max length
   */
   $("#tweet-text").on('keypress', function() {
     const $textArea = $("#tweet-text");
@@ -19,7 +21,7 @@ $(document).ready(function() {
     
     $counterElement.html(maxTweetLength - $textArea.val().length);
 
-    if ($textArea.val().length < maxTweetLength) {
+    if ($textArea.val().length <= maxTweetLength) {
       $counterElement.removeClass("too-long");
       $tweetButton.attr("disabled", false);
     } else {
@@ -34,7 +36,7 @@ $(document).ready(function() {
     
     $counterElement.html(maxTweetLength - $textArea.val().length);
 
-    if ($textArea.val().length < maxTweetLength) {
+    if ($textArea.val().length <= maxTweetLength) {
       $counterElement.removeClass("too-long");
       $tweetButton.attr("disabled", false);
     } else {
@@ -46,10 +48,12 @@ $(document).ready(function() {
     const $textArea = $("#tweet-text");
     const $counterElement = $(".counter");
     const $tweetButton = $("#tweet-button");
+
+    hideErrorMessage(); // hide any error messages upon key entry
     
     $counterElement.html(maxTweetLength - $textArea.val().length);
 
-    if ($textArea.val().length < maxTweetLength) {
+    if ($textArea.val().length <= maxTweetLength) {
       $counterElement.removeClass("too-long");
       $tweetButton.attr("disabled", false);
     } else {
@@ -65,11 +69,11 @@ $(document).ready(function() {
     e.preventDefault();
    
     if ($("#tweet-text").val().length > maxTweetLength) {
-      alert("The length of your tweet must be 140 chars or less.");
+      showErrorMessage("Tweet must be 140 chars or less.");
       return;
     }
     if ($("#tweet-text").val().length === 0) {
-      alert("Please enter tweet text; this field cannot be empty");
+      showErrorMessage("Please enter tweet text.");
       return;
     }
     
@@ -91,4 +95,27 @@ function clearTextArea() {
   /* help function to clear text area after a tweet is submitted */
   $("#tweet-text").val("");
   $(".counter").html('140');
+}
+
+function showErrorMessage(errText) {
+  /**
+   * Shows a blinking error message when the user submits invalid tweet
+   * (empty or character count too long)
+   */
+  
+   const $errorMessage = $("#error-message");
+   const $divError = $("#div-error");
+   $divError.css({"visibility": "visible"});
+   $errorMessage.text(errText);
+
+   // blinking animation
+   $divError.animate({opacity: 0}, 200, "linear", function() {
+     $divError.animate({opacity: 1}, 200);
+   });
+}
+function hideErrorMessage() {
+  // Hides the error message ( to be implemented when user starts typing in the 
+  // text area).
+  const $divError = $("#div-error");
+  $divError.css({"visibility": "hidden"});
 }

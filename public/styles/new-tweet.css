@@ -50,3 +50,15 @@
 .container h2 {
   margin: 1px;
 }
+
+#tweet-button {
+  float: left;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#div-error {
+  color: red;
+  float: left;
+  font-size: 1em;
+  visibility: hidden;
+}

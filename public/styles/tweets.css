@@ -1,5 +1,5 @@
 
-.tweet-container {
+#tweet-container {
   background-color: whitesmoke;
   border-radius: 3px;
   padding: .5em;
@@ -46,6 +46,10 @@
 
 .tweet:hover .tweet-name-hover {
   color: #244751;
+}
+
+.tweet:hover .twitter-handle-hover {
+  color: #434d56;
 }
 
 .footer .flags {

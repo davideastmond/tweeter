@@ -79,9 +79,16 @@ $(document).ready(function() {
       url: "/tweets",
       data: $(this).serialize(),
       success: function (data) {
-        console.log("Response ", data);
+        // Refresh the new tweets and clear the textarea
+        clearTextArea();
+        loadTweets(); 
       }
     })
   });
-  
 });
+
+function clearTextArea() {
+  /* help function to clear text area after a tweet is submitted */
+  $("#tweet-text").val("");
+  $(".counter").html('140');
+}

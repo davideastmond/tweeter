@@ -12,11 +12,12 @@ $(document).ready(function() {
   $("#tweet-text").on('keyup', function() {
     const textArea = $("#tweet-text");
     const counterElement = $(".counter");
+    
+    counterElement.html(maxTweetLength - textArea.val().length);
+
     if (textArea.val().length < maxTweetLength) {
-      counterElement.html(maxTweetLength - textArea.val().length);
       counterElement.removeClass("too-long");
     } else {
-      counterElement.html(maxTweetLength - textArea.val().length);
       counterElement.addClass("too-long");
     }
   })

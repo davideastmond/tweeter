@@ -5,6 +5,7 @@
   padding: .5em;
   height: auto;
 }
+
 .tweet .header {
   display: inline-block;
   width: 100%;
@@ -13,6 +14,7 @@
   padding-top: .5em;
   background-color: #e6f2ff;
 }
+
 .tweet .twitter-handle {
   text-align: right;
   float:right;
@@ -21,18 +23,17 @@
 
 .tweet .display-name {
   width: auto;
-  
   color: #cccccc;
   float:left;
   padding-left: .1em;
 }
+
 .tweet .avatar {
   width: 60px;
   height: 60px;
   border: solid 1px black;
   border-radius: 3px;
   float: left;
-  
 }
 
 .tweet:hover .hover-float {
@@ -42,7 +43,6 @@
 .tweet:hover .header-float {
   background-color: #cce6ff;
 }
-
 
 .tweet:hover .tweet-name-hover {
   color: #244751;
@@ -54,6 +54,7 @@
   object-fit: contain;
   display: none;
 }
+
 .footer {
   background-color: cornsilk;
   height: 2em;

@@ -77,7 +77,6 @@ function loadTweets() {
    * This function is esponsible 
    * for fetching tweets from the http://localhost:8080/tweets page.
    */
-  console.log("Loading tweets...");
   $.ajax('/tweets', {method:'GET'})
   .then(function (tweetData) {
     renderTweets(tweetData);

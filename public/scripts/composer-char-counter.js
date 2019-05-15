@@ -68,6 +68,7 @@ $(document).ready(function() {
       alert("Please enter text to tweet.");
     } else {
       // Tweet text should be fine. Complete a post request using AJAX
+      
       $.ajax({
         type: "POST", 
         url: "/tweets",

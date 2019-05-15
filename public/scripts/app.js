@@ -65,6 +65,9 @@ $(document).ready(function() {
      This function can be responsible for taking in an array of tweet objects and then appending each one to the #tweets-container.
      */
 
+    // Make the tweet container visible when tweets are being rendered
+    // by removing the CSS class "invisible"
+    $("#tweet-container").removeClass("invisible");
     $("#tweet-container").empty();
     for (let tweetElement of arrObjTweets) {
       $individualTweet = createTweetElement(tweetElement);

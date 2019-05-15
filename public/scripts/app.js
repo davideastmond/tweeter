@@ -4,6 +4,10 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+ // Keeps track of where the new-tweet container is (up off screen or at its
+// normal position)
+let togglePos = 0;
+
 function createTweetElement (fromData) {
    /* takes in a tweet object and is responsible for returning a tweet <article> element containing the entire HTML structure of the tweet.
   The tweet data object that the function will take will have all the necessary tweet data:
@@ -87,3 +91,21 @@ $(document).ready(function() {
   /* Form is ready to be loaded - immediately show tweets from the db*/
   loadTweets();
 });
+
+$(function() {
+  /* Create event handlers that handle the compose button click, 
+  which toggles the compose-tweet section sliding off/sliding down*/
+  $(".toggle-button").on('click', function(event) {
+    if (togglePos === 0) {
+      $(".new-tweet").slideUp(400, function(e) {
+        togglePos = 1;
+      })
+    } else {
+      $(".new-tweet").slideDown(400, function(e) {
+        togglePos = 0;
+        $("#tweet-text").focus();
+      })
+    }
+  });
+});
+

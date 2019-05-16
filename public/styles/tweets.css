@@ -57,9 +57,10 @@
 
 .footer .flags {
   height: 4em;
-  width: 5em;
+  width: 5.5em;
   object-fit: contain;
-  display: none;
+  
+  /* display: none; */
 }
 .invisible {
   display: none;
@@ -74,6 +75,18 @@
   word-wrap: break-word;
 }
 
+.fa-heart {
+  text-align: left;
+  float: left;
+}
+
+.like-counter-integer {
+  /* margin-right: .5em; */
+  width: 1em;
+  float: left;
+}
 .fa-heart:hover {
   color: red;
+  cursor: pointer;
+  
 }

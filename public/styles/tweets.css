@@ -73,3 +73,7 @@
 .tweet-text {
   word-wrap: break-word;
 }
+
+.fa-heart:hover {
+  color: red;
+}

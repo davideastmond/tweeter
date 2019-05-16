@@ -47,7 +47,10 @@ function createTweetElement (fromData) {
   const $retweetIcon = $("<i>").addClass("fas").addClass("fa-retweet");
   const $flagIcon = $("<i>").addClass("fas").addClass("fa-flag");
 
-  $iconsDiv.append($heartIcon, $retweetIcon, $flagIcon);
+  const $likesCounterInteger = $("<a>", {text:`${fromData.likes}`}).addClass("like-counter-integer");
+  $likesCounterInteger.attr('data-tag', fromData._id);
+
+  $iconsDiv.append($heartIcon, $likesCounterInteger, $retweetIcon, $flagIcon);
   $tweetFooter.append($dateTimeAgo, $iconsDiv);
 
   // Append all components to the article then return it

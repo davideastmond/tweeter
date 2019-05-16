@@ -67,13 +67,13 @@ function renderTweets(arrObjTweets) {
   $("#tweet-container").empty();
   for (let tweetElement of arrObjTweets) {
     $individualTweet = createTweetElement(tweetElement);
-    $("#tweet-container").append($individualTweet);
+    $("#tweet-container").prepend($individualTweet);
   }
 }
 
 function loadTweets() {
   /**
-   * This function is esponsible 
+   * This function is responsible 
    * for fetching tweets from the http://localhost:8080/tweets page.
    */
   $.ajax('/tweets', {method:'GET'})

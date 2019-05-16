@@ -53,7 +53,8 @@ function createTweetElement (fromData) {
   if (Number(fromData.likes) < 1) {
     $likesCounterInteger.addClass("fa-heart-invisible");
   }
-  $likesCounterInteger.attr('data-id', fromData._id);
+  //$likesCounterInteger.attr('data-id', fromData._id);
+  $heartIcon.data('id', fromData._id);
 
   $iconsDiv.append($heartIcon, $likesCounterInteger, $retweetIcon, $flagIcon);
   $tweetFooter.append($dateTimeAgo, $iconsDiv);
@@ -88,6 +89,19 @@ function loadTweets() {
   .then(function (tweetData) {
     renderTweets(tweetData);
   });
+}
+
+function testDummyRoute(data) {
+  let sendData = {id: data};
+  $.ajax({
+    type: "POST", 
+    url: "/dummy",
+    data: sendData,
+    success: function (data) {
+      // Refresh the new tweets and clear the textarea
+      console.log("Received dummy response!");
+    }
+  })
 }
 
 $(document).ready(function() {
@@ -128,10 +142,11 @@ $(function() {
   // Handle when the like button is clicked - for images
   $(document).on('click', ".fa-heart", function(e) {
     // Must increase the like count
-    console.log("Like button was clicked.");
-    // get the id
+    
     const data_id = $(".fa-heart").data("id");
-    console.log("Data element clicked was ", data_id);
+    console.log("Data element clicked was", data_id);
+    testDummyRoute(data_id);
+   
   })
 });
 

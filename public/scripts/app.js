@@ -96,13 +96,21 @@ $(document).ready(function() {
 $(function() {
   /* Create event handlers that handle the compose button click, 
   which toggles the compose-tweet section sliding off/sliding down*/
+  
+  // When the page loads, ensure that the compose tweet section is hidden
+  $(".new-tweet").css('visibility', 'hidden');
+  $(".new-tweet").slideUp(250, function(e) {
+    togglePos = 1;
+  });
+
   $(".toggle-button").on('click', function(event) {
     if (togglePos === 0) {
-      $(".new-tweet").slideUp(400, function(e) {
+      $(".new-tweet").slideUp(250, function(e) {
         togglePos = 1;
       })
     } else {
-      $(".new-tweet").slideDown(400, function(e) {
+      $(".new-tweet").css('visibility', 'visible');
+      $(".new-tweet").slideDown(250, function(e) {
         togglePos = 0;
         $("#tweet-text").focus();
       })
@@ -110,7 +118,4 @@ $(function() {
   });
 });
 
-function showResponse() {
-  console.log("Response!");
-}
 

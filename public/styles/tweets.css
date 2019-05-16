@@ -35,6 +35,10 @@
   float: left;
 }
 
+.avatar:hover {
+  cursor: pointer;
+}
+
 .tweet:hover .hover-float {
   display: block;
 }

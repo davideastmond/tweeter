@@ -21,10 +21,12 @@ function createTweetElement (fromData) {
   const $header = $("<header>").addClass("header");
   $header.addClass("header-float");
 
-
+  const $avatarDiv = $("<div>").addClass("div-avatar");
   const $avatar = $("<img>");
   $avatar.addClass("avatar")
   $avatar.attr('src', fromData.user.avatars.small);
+
+  $avatarDiv.append($avatar);
     
   const $displayName = $("<h2>", {text: `${fromData.user.name}`});
   $displayName.addClass("display-name");
@@ -33,7 +35,7 @@ function createTweetElement (fromData) {
   const $twitterHandleAside = $("<aside>", {text: `${fromData.user.handle}`}).addClass("twitter-handle");
   $twitterHandleAside.addClass("twitter-handle-hover");
   
-  $header.append($avatar, $displayName, $twitterHandleAside);
+  $header.append($avatarDiv, $displayName, $twitterHandleAside);
 
   const $bodyText = $("<p>", {text: `${fromData.content.text}`}).addClass("tweet-text");
   const $tweetFooter = $("<footer>").addClass("footer");
@@ -83,6 +85,12 @@ function loadTweets() {
 $(document).ready(function() {
   /* Form is ready to be loaded - immediately show tweets from the db*/
   loadTweets();
+
+  // Event handler to respond when the avatar is clicked
+  $(".div-avatar").on('click', function (e) {
+    console.log("avatar is clicked");
+  });
+
 });
 
 $(function() {
@@ -102,4 +110,7 @@ $(function() {
   });
 });
 
+function showResponse() {
+  console.log("Response!");
+}
 

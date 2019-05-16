@@ -30,7 +30,7 @@ module.exports = function(DataHelpers) {
         text: req.body.text
       },
       created_at: Date.now(), 
-      likes: "0"
+      likes: 0
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
@@ -41,7 +41,31 @@ module.exports = function(DataHelpers) {
       }
     });
   });
+  tweetsRoutes.post("/dummy", function(req, res) {
+    if (!req.body.text) {
+      res.status(400).json({error: 'invalid request: no data in POST body'});
+      return;
+    }
+  })
+  tweetsRoutes.post("/likes", function(req, res) {
+    if (!req.body.text) {
+      res.status(400).json({error: 'invalid request: no data in POST body'});
+      return;
+    }
 
+    const id = req.body.id;
+
+    if (id) {
+      // Check if valid
+      DataHelpers.increaseLikeCount(id, (err) => {
+        if (err) {
+          res.status(500).json({error: err.message});
+        } else {
+          res.status(201).send();
+        }
+      })
+    }
+  })
   return tweetsRoutes;
 
 }

@@ -60,7 +60,7 @@
   width: 5.5em;
   object-fit: contain;
   
-  /* display: none; */
+  display: none;
 }
 .invisible {
   display: none;
@@ -80,13 +80,14 @@
   float: left;
 }
 
+.fa-heart-invisible {
+  display: none;
+}
 .like-counter-integer {
-  /* margin-right: .5em; */
   width: 1em;
   float: left;
 }
 .fa-heart:hover {
   color: red;
   cursor: pointer;
-  
 }

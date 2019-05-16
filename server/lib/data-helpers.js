@@ -21,8 +21,18 @@ module.exports = function makeDataHelpers(db) {
       db.collection("tweets").find().toArray((err, results) => {
         if (err) throw err;
         const sortNewestFirst = (a, b) => a.created_at - b.created_at;
-        callback(null,results.sort(sortNewestFirst));
+        callback(null, results.sort(sortNewestFirst));
       })
+    },
+
+    // handles like increment
+    increaseLikeCount: function(idToUpdate, callback) {
+      try {
+        db.collection("tweets").update({_id: idToUpdate },  {$inc: {likes: 1}});
+        callback(null, true);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 }

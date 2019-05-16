@@ -48,7 +48,12 @@ function createTweetElement (fromData) {
   const $flagIcon = $("<i>").addClass("fas").addClass("fa-flag");
 
   const $likesCounterInteger = $("<a>", {text:`${fromData.likes}`}).addClass("like-counter-integer");
-  $likesCounterInteger.attr('data-tag', fromData._id);
+
+  // add a css tag to hide the tweet if like count is 0
+  if (Number(fromData.likes) < 1) {
+    $likesCounterInteger.addClass("fa-heart-invisible");
+  }
+  $likesCounterInteger.attr('data-id', fromData._id);
 
   $iconsDiv.append($heartIcon, $likesCounterInteger, $retweetIcon, $flagIcon);
   $tweetFooter.append($dateTimeAgo, $iconsDiv);
@@ -119,6 +124,15 @@ $(function() {
       })
     }
   });
+
+  // Handle when the like button is clicked - for images
+  $(document).on('click', ".fa-heart", function(e) {
+    // Must increase the like count
+    console.log("Like button was clicked.");
+    // get the id
+    const data_id = $(".fa-heart").data("id");
+    console.log("Data element clicked was ", data_id);
+  })
 });
 
 

@@ -94,7 +94,7 @@ $(document).ready(function() {
 });
 
 function clearTextArea() {
-  /* help function to clear text area after a tweet is submitted */
+  /* helper function to clear text area after a tweet is submitted */
   $("#tweet-text").val("");
   $(".counter").html('140');
 }

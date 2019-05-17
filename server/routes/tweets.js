@@ -51,7 +51,7 @@ module.exports = function(DataHelpers) {
 
     if (id) {
       // Check if valid
-      DataHelpers.increaseLikeCount(id, (err) => {
+      DataHelpers.toggleLikeCount(id, (err) => {
         if (err) {
           res.status(500).json({error: err.message});
         } else {

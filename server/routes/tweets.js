@@ -41,14 +41,18 @@ module.exports = function(DataHelpers) {
       }
     });
   });
+
   tweetsRoutes.post("/dummy", function(req, res) {
+    
     if (!req.body.id) {
       res.status(400).json({error: 'invalid request: no data in POST body'});
       return;
     }
-    console.log("ROUTES DUMMY GOT POST REQ!");
+    const id = req.body.id;
+    console.log("ROUTES DUMMY GOT POST REQ! ", id);
     res.status(201).send;
-  })
+  });
+
   tweetsRoutes.post("/likes", function(req, res) {
     if (!req.body.text) {
       res.status(400).json({error: 'invalid request: no data in POST body'});
@@ -67,7 +71,7 @@ module.exports = function(DataHelpers) {
         }
       })
     }
-  })
+  });
   return tweetsRoutes;
 
 }

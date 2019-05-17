@@ -55,6 +55,7 @@ function createTweetElement (fromData) {
   }
   //$likesCounterInteger.attr('data-id', fromData._id);
   $heartIcon.data('id', fromData._id);
+  $heartIcon.attr('id', fromData._id);
 
   $iconsDiv.append($heartIcon, $likesCounterInteger, $retweetIcon, $flagIcon);
   $tweetFooter.append($dateTimeAgo, $iconsDiv);
@@ -93,9 +94,11 @@ function loadTweets() {
 
 function testDummyRoute(data) {
   let sendData = {id: data};
+  console.log("testDummyRoute", data);
+
   $.ajax({
     type: "POST", 
-    url: "/dummy",
+    url: "/tweets/dummy",
     data: sendData,
     success: function (data) {
       // Refresh the new tweets and clear the textarea
@@ -143,9 +146,12 @@ $(function() {
   $(document).on('click', ".fa-heart", function(e) {
     // Must increase the like count
     
+    console.log(e.target.id);
+    /*
     const data_id = $(".fa-heart").data("id");
     console.log("Data element clicked was", data_id);
     testDummyRoute(data_id);
+    */
    
   })
 });

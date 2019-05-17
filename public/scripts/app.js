@@ -90,17 +90,17 @@ function loadTweets() {
   });
 }
 
-function testDummyRoute(data) {
-  let sendData = {id: data};
-  console.log("testDummyRoute", data);
+function likeTweet(to_id) {
+  let sendData = {id: to_id};
 
   $.ajax({
     type: "POST", 
-    url: "/tweets/dummy",
+    url: "/tweets/likes",
     data: sendData,
     success: function (data) {
       // Refresh the new tweets and clear the textarea
-      console.log("Received dummy response!");
+      console.log("Received response from likes ");
+      loadTweets();
     }
   })
 }
@@ -133,7 +133,7 @@ $(function() {
       })
     } else {
       $(".new-tweet").css('visibility', 'visible');
-      $(".new-tweet").slideDown(250, function(e) {
+      $(".new-tweet").slideDown(50, function(e) {
         togglePos = 0;
         $("#tweet-text").focus();
       })
@@ -146,9 +146,10 @@ $(function() {
      * accessing the id attribute of the element that was clicked, found 
      * in the event "e" arguments id properties
      */
+    const data_id = e.target.id;
     console.log(e.target.id);
     
-    testDummyRoute(data_id);
+    likeTweet(data_id);
     
    
   })

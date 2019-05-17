@@ -1,61 +1,173 @@
 /* nav-related CSS stylings */
+@media (min-width: 950px) {
+  #nav-bar {
+    background-color: #00a087;
+    color: #e8fdff;
+    padding-left: 2em;
+    padding-right: 2em;
+    height: 80px;
+    width: 100%;
+    padding-top: .5em;
+  }
+  #nav-bar .header {
+    position: relative;
+    font-size: 2em;
+    padding-left: 10px;
+    line-height: 80px;
+    float: left;
+  }
 
-#nav-bar {
-  background-color: #00a087;
-  color: #e8fdff;
-  padding-left: 2em;
-  padding-right: 2em;
-  height: 80px;
-  width: 100%;
-  padding-top: .5em;
+ .logo {
+   max-width: 100%;
+    height: 80px;
+    width: 80px;
+    float: left;
+  }
+
+  .toggle-button {
+    background-color: #e6f2ff;
+    border-radius: 3px;
+    border-color: black;
+    border-style: solid;
+    border-width: .1em;
+    float: right;
+    color: #99bbff;
+    position: relative;
+    width: auto;
+    height: auto;
+    text-align: center;
+    vertical-align: center;
+    padding: 20px;
+    -webkit-transistion-duration:0.4s; /* Safari */
+    transition-duration: 0.4s;
+  }
+
+  .toggle-button:hover {
+    background-color: #99caff;
+    color: beige;
+    box-shadow: 1px 1px 2px grey;
+    cursor: pointer;
+  }
+
+  .toggle-button:after {
+    background: #90EE90;
+    opacity: 0;
+    transition: all 0.8s;
+  }
+
+  .toggle-button:active:after {
+    opacity: 1;
+    transition:0s;
+  }
 }
-#nav-bar .header {
-  position: relative;
-  font-size: 2em;
-  padding-left: 10px;
-  line-height: 80px;
-  float: left;
+@media (min-width: 400px) and (max-width: 949px) {
+  #nav-bar {
+    background-color: #00a087;
+    color: #e8fdff;
+    padding-left: 5%;
+    padding-right: 2em;
+    height: 70px;
+    width: 100%;
+    padding-top: .5em;
+  }
+  #nav-bar .logo {
+    height: 80px;
+    width: 80px;
+    float: left;
+  }
+  #nav-bar .header {
+    position: relative;
+    font-size: 2em;
+    padding-left: 10px;
+    line-height: 80px;
+    float: left;
+  }
+
+  .toggle-button {
+    background-color: #e6f2ff;
+    border-radius: 3px;
+    border-color: black;
+    border-style: solid;
+    border-width: .1em;
+    float: right;
+    color: #99bbff;
+    position: relative;
+    width: auto;
+    height: auto;
+    text-align: center;
+    padding: 20px;
+    transition-duration: 0.4s;
+
+  }
+  .toggle-button:hover {
+    background-color: #99caff;
+    color: beige;
+    box-shadow: 1px 1px 2px grey;
+    cursor: pointer;
+  }
+
+  .toggle-button:after {
+    background: #90EE90;
+    opacity: 0;
+    transition: all 0.8s;
+  }
+
+  .toggle-button:active:after {
+    opacity: 1;
+    transition:0s;
+  }
 }
+@media (max-width: 400px) {
+  #nav-bar {
+    background-color: #00a087;
+    color: #e8fdff;
+    
+    padding-right: 0px;
+    height: 70px;
+    width: 100%;
+    padding-top: 1px;
+    margin-top: 0%;
+    vertical-align: center;
+  }
 
-#nav-bar .logo {
-  height: 80px;
-  width: 80px;
-  float: left;
-}
+  .logo {
+    height: 60px;
+    width: 60px;
+    float: left;
+  }
+  .toggle-button {
+    background-color: #e6f2ff;
+    border-radius: 3px;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    color: #99bbff;
+   
+    height: auto;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    transition-duration: 0.4s;
+    width: auto;
+  }
+  .header {
+    visibility: hidden;
+  }
+  .toggle-button:hover {
+    background-color: #99caff;
+    color: beige;
+    box-shadow: 1px 1px 2px grey;
+    cursor: pointer;
+  }
 
+  .toggle-button:after {
+    background: #90EE90;
+    opacity: 0;
+    transition: all 0.8s;
+  }
 
-.toggle-button {
-  background-color: #e6f2ff;
-  border-radius: 3px;
-  border-color: black;
-  border-style: solid;
-  border-width: .1em;
-  float: right;
-  color: #99bbff;
-  position: relative;
-  width: auto;
-  height: auto;
-  text-align: center;
-  vertical-align: center;
-  padding: 20px;
-  -webkit-transistion-duration:0.4s; /* Safari */
-  transition-duration: 0.4s;
-}
-
-.toggle-button:hover {
-  background-color: #99caff;
-  color: beige;
-  box-shadow: 1px 1px 2px grey;
-  cursor: pointer;
-}
-
-.toggle-button:after {
-  background: #90EE90;
-  opacity: 0;
-  transition: all 0.8s;
-}
-
-.toggle-button:active:after {
-  opacity: 1;
-  transition:0s;
+  .toggle-button:active:after {
+    opacity: 1;
+    transition:0s;
+  }
 }

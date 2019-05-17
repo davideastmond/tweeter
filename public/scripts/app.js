@@ -9,15 +9,15 @@
 let togglePos = 0;
 
 function createTweetElement (fromData) {
-   /* takes in a tweet object and is responsible for returning a tweet <article> element containing the entire HTML structure of the tweet.
+   /* takes in a tweet object and is responsible for returning a tweet <article> element containing 
+   the entire HTML structure of the tweet.
   The tweet data object that the function will take will have all the necessary tweet data:
   */
-  
+
   const $tweet = $("<article>");
   $tweet.empty(); 
   $tweet.addClass("tweet");
 
- 
   const $header = $("<header>").addClass("header");
   $header.addClass("header-float");
 
@@ -53,8 +53,6 @@ function createTweetElement (fromData) {
   if (Number(fromData.likes) < 1) {
     $likesCounterInteger.addClass("fa-heart-invisible");
   }
-  //$likesCounterInteger.attr('data-id', fromData._id);
-  $heartIcon.data('id', fromData._id);
   $heartIcon.attr('id', fromData._id);
 
   $iconsDiv.append($heartIcon, $likesCounterInteger, $retweetIcon, $flagIcon);
@@ -67,8 +65,8 @@ function createTweetElement (fromData) {
 }
 
 function renderTweets(arrObjTweets) {
-  /**
-   This function can be responsible for taking in an array of tweet objects and then appending each one to the #tweets-container.
+  /** This function can be responsible for taking in an array of tweet objects and then 
+   appending each one to the #tweets-container.
    */
 
   // Make the tweet container visible when tweets are being rendered
@@ -111,8 +109,8 @@ $(document).ready(function() {
   /* Form is ready to be loaded - immediately show tweets from the db*/
   loadTweets();
 
-  // Event handler to respond when the avatar is clicked
-  $(".div-avatar").on('click', function (e) {
+  // Event handler to respond when a tweeter's avatar is clicked on their respective tweet
+  $(document).on('click', ".div-avatar", function (e) {
     console.log("avatar is clicked");
   });
 
@@ -120,7 +118,7 @@ $(document).ready(function() {
 
 $(function() {
   /* Create event handlers that handle the compose button click, 
-  which toggles the compose-tweet section sliding off/sliding down*/
+  which toggles the compose-tweet section sliding off-screen /sliding down on screen*/
   
   // When the page loads, ensure that the compose tweet section is hidden
   $(".new-tweet").css('visibility', 'hidden');
@@ -142,16 +140,16 @@ $(function() {
     }
   });
 
-  // Handle when the like button is clicked - for images
   $(document).on('click', ".fa-heart", function(e) {
-    // Must increase the like count
-    
+    /** This function handles when the 'like' icon is clicked, and should
+     * access a function that updates the db w/ a like count. We do this by
+     * accessing the id attribute of the element that was clicked, found 
+     * in the event "e" arguments id properties
+     */
     console.log(e.target.id);
-    /*
-    const data_id = $(".fa-heart").data("id");
-    console.log("Data element clicked was", data_id);
+    
     testDummyRoute(data_id);
-    */
+    
    
   })
 });

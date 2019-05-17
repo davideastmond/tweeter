@@ -110,10 +110,17 @@ $(document).ready(function() {
   loadTweets();
 
   // Event handler to respond when a tweeter's avatar is clicked on their respective tweet
+  // which will open a modal pop-up to get a larger image
   $(document).on('click', ".div-avatar", function (e) {
-    console.log("avatar is clicked");
+    console.log("Clicked on image");
+    $(".modal").css('visibility', 'visible');
   });
 
+  // Event handler to clo
+  $(document).on('click', '.close', function(e) {
+    console.log("close button line 118");
+    $(".modal").css('visibility', 'hidden');
+  })
 });
 
 $(function() {
@@ -147,11 +154,7 @@ $(function() {
      * in the event "e" arguments id properties
      */
     const data_id = e.target.id;
-    console.log(e.target.id);
-    
     likeTweet(data_id);
-    
-   
   })
 });
 

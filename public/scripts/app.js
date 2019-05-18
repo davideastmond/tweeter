@@ -92,7 +92,7 @@ function loadTweets() {
    * This function is responsible 
    * for fetching tweets from the http://localhost:8080/tweets page.
    */
-  $.ajax('/tweets', {method:'GET'})
+  $.ajax('/tweets', { method:'GET'})
   .then(function (tweetData) {
     renderTweets(tweetData);
   });
@@ -123,7 +123,12 @@ $(document).ready(function() {
     
     const dataid = e.target.id;
     console.log("data ID is", dataid);
+    let obj = largeImages.find(function(e) {
+      return e.id == dataid;
+    });
+    console.log(obj);
     $(".modal").css('visibility', 'visible');
+
   });
 
   // Event handler to close the modal dialog when X button is clicked

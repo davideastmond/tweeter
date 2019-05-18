@@ -122,11 +122,11 @@ $(document).ready(function() {
   $(document).on('click', ".div-avatar", function (e) {
     
     const dataid = e.target.id;
-    console.log("data ID is", dataid);
     let obj = largeImages.find(function(e) {
-      return e.id == dataid;
+      return e.id === dataid;
     });
-    console.log(obj);
+    console.log(obj.source);
+    $("#large-avatar").attr('src', obj.source);
     $(".modal").css('visibility', 'visible');
 
   });

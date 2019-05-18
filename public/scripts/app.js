@@ -7,6 +7,7 @@
  // Keeps track of where the new-tweet container is (up off screen or at its
 // normal position)
 let togglePos = 0;
+let largeImages = [];
 
 function createTweetElement (fromData) {
    /* takes in a tweet object and is responsible for returning a tweet <article> element containing 
@@ -24,6 +25,7 @@ function createTweetElement (fromData) {
   const $avatarDiv = $("<div>").addClass("div-avatar");
   const $avatar = $("<img>");
   $avatar.addClass("avatar")
+  $avatar.attr("id", fromData._id);
   $avatar.attr('src', fromData.user.avatars.small);
 
   $avatarDiv.append($avatar);
@@ -55,6 +57,10 @@ function createTweetElement (fromData) {
   }
   $heartIcon.attr('id', fromData._id);
 
+  // keep track of large image reference
+  let imageReference = {id: fromData._id, source: fromData.user.avatars.large};
+  largeImages.push(imageReference);
+
   $iconsDiv.append($heartIcon, $likesCounterInteger, $retweetIcon, $flagIcon);
   $tweetFooter.append($dateTimeAgo, $iconsDiv);
 
@@ -73,10 +79,12 @@ function renderTweets(arrObjTweets) {
   // by removing the CSS class "invisible"
   $("#tweet-container").removeClass("invisible");
   $("#tweet-container").empty();
+  largeImages = [];
   for (let tweetElement of arrObjTweets) {
     $individualTweet = createTweetElement(tweetElement);
     $("#tweet-container").prepend($individualTweet);
   }
+  console.log("Large images collection line 85", largeImages);
 }
 
 function loadTweets() {
@@ -112,11 +120,13 @@ $(document).ready(function() {
   // Event handler to respond when a tweeter's avatar is clicked on their respective tweet
   // which will open a modal pop-up to get a larger image
   $(document).on('click', ".div-avatar", function (e) {
-    console.log("Clicked on image");
+    
+    const dataid = e.target.id;
+    console.log("data ID is", dataid);
     $(".modal").css('visibility', 'visible');
   });
 
-  // Event handler to clo
+  // Event handler to close the modal dialog when X button is clicked
   $(document).on('click', '.close', function(e) {
     console.log("close button line 118");
     $(".modal").css('visibility', 'hidden');
@@ -157,5 +167,3 @@ $(function() {
     likeTweet(data_id);
   })
 });
-
-

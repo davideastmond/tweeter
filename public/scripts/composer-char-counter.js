@@ -14,7 +14,6 @@ $(document).ready(function() {
 
    Please also note the tweet button will disable if the tweet exceeds max length
   */
- // Hide the compose section
 
   $("#tweet-text").on('keypress', function() {
     const $textArea = $("#tweet-text");

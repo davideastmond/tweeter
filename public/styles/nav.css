@@ -77,6 +77,8 @@
     float: left;
     height: 80px;
     width: 80px;
+    padding-bottom: .5em;
+    border-right: .5em;
   }
 
   #nav-bar .header {
@@ -122,7 +124,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (min-width: 0px) and (max-width: 400px) {
   #nav-bar {
     background-color: #00a087;
     color: #e8fdff;
@@ -139,6 +141,7 @@
     float: left;
     height: 60px;
     width: 60px;
+    padding-right: .5em;
   }
 
   .toggle-button {

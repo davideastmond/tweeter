@@ -41,7 +41,10 @@ function createTweetElement (fromData) {
 
   const $bodyText = $("<p>", {text: `${fromData.content.text}`}).addClass("tweet-text");
   const $tweetFooter = $("<footer>").addClass("footer");
-  const $dateTimeAgo = $("<a>", {text: `${fromData.created_at}`}).addClass("tweet-date");
+
+  // Date stamp
+  const dateStamp = new Date(fromData.created_at);
+  const $dateTimeAgo = $("<a>", {text: `${dateStamp.toDateString()}`}).addClass("tweet-date");
 
   // Create a div w/ heart, retweet and flag icons and append to the footer
   const $iconsDiv = $("<div>").addClass("flags").addClass("hover-float");

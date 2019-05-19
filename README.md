@@ -15,7 +15,6 @@ This repository is the starter code for the project: Students will fork and clon
 2. Compose a tweet and persist the data using MongoDB
 3. Like and unlike a tweet while persisting the data using MongoDB
 4. View large-size avatar when clicking on a user's thumbnail
-5. Basic responsivity
 
 
 ## Getting Started

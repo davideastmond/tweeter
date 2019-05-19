@@ -30,7 +30,8 @@ $(document).ready(function() {
       $counterElement.addClass("too-long");
       $tweetButton.attr("disabled", true);
     }
-  })
+  });
+
   $("#tweet-text").on('keyup', function() {
     const $textArea = $("#tweet-text");
     const $counterElement = $(".counter");
@@ -45,13 +46,14 @@ $(document).ready(function() {
       $counterElement.addClass("too-long");
       $tweetButton.attr("disabled", true);
     }
-  })
+  });
+
   $("#tweet-text").on('keydown', function() {
     const $textArea = $("#tweet-text");
     const $counterElement = $(".counter");
     const $tweetButton = $("#tweet-button");
 
-    hideErrorMessage(); // hide any error messages upon key entry
+    hideErrorMessage();
     
     $counterElement.html(maxTweetLength - $textArea.val().length);
 
@@ -62,7 +64,7 @@ $(document).ready(function() {
       $counterElement.addClass("too-long");
       $tweetButton.attr("disabled", true);
     }
-  })
+  });
 
   $("#tweet-form").on("submit", function(e) {
     /* This event handler prevents the form from being submitted if the 
@@ -79,17 +81,18 @@ $(document).ready(function() {
       return;
     }
     
-    // passed validation, the form will submit
+    /* After validation, the form will submit the post request, refresh
+    and load new tweets and clear the text area
+    */
     $.ajax({
       type: "POST", 
       url: "/tweets",
       data: $(this).serialize(),
       success: function (data) {
-        // Refresh the new tweets and clear the textarea
         clearTextArea();
         loadTweets(); 
       }
-    })
+    });
   });
 });
 
@@ -110,14 +113,13 @@ function showErrorMessage(errText) {
    $divError.css({"visibility": "visible"});
    $errorMessage.text(errText);
 
-   // blinking animation
    $divError.animate({opacity: 0}, 200, "linear", function() {
      $divError.animate({opacity: 1}, 200);
    });
 }
 function hideErrorMessage() {
-  // Hides the error message ( to be implemented when user starts typing in the 
-  // text area).
+  /* Hides the error message ( to be implemented when user starts typing in the 
+   text area). */
   const $divError = $("#div-error");
   $divError.css({"visibility": "hidden"});
 }

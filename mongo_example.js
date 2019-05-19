@@ -12,7 +12,6 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
 
   db.collection("tweets").find().toArray((err, results) => {
     if (err) throw err;
-    console.log(results);
     db.close();
   })
 })

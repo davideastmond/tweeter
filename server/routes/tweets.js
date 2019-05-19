@@ -50,7 +50,6 @@ module.exports = function(DataHelpers) {
     const id = req.body.id;
 
     if (id) {
-      // Check if valid
       DataHelpers.toggleLikeCount(id, (err) => {
         if (err) {
           res.status(500).json({error: err.message});

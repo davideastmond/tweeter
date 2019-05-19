@@ -4,14 +4,14 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
- // Keeps track of where the new-tweet container is (up off screen or at its
-// normal position)
+/* Global variables: the firstKeeps track of where the new-tweet container is (up off screen or at its
+ normal position). The second keeps track of the src for the large avatars */
 let togglePos = 0;
 let largeImages = [];
 
 function createTweetElement (fromData) {
-   /* takes in a tweet object and is responsible for returning a tweet <article> element containing 
-   the entire HTML structure of the tweet.
+  /* takes in a tweet object and is responsible for returning a tweet <article> element containing 
+  the entire HTML structure of the tweet.
   The tweet data object that the function will take will have all the necessary tweet data:
   */
 
@@ -84,7 +84,6 @@ function renderTweets(arrObjTweets) {
     $individualTweet = createTweetElement(tweetElement);
     $("#tweet-container").prepend($individualTweet);
   }
-  console.log("Large images collection line 85", largeImages);
 }
 
 function loadTweets() {
@@ -99,6 +98,7 @@ function loadTweets() {
 }
 
 function likeTweet(to_id) {
+  /* Creates a post request to the server to handle a tweet 'like' */
   let sendData = {id: to_id};
 
   $.ajax({
@@ -106,42 +106,36 @@ function likeTweet(to_id) {
     url: "/tweets/likes",
     data: sendData,
     success: function (data) {
-      // Refresh the new tweets and clear the textarea
-      console.log("Received response from likes ");
       loadTweets();
     }
   })
 }
 
 $(document).ready(function() {
-  /* Form is ready to be loaded - immediately show tweets from the db*/
+  // Form is ready to be loaded - immediately show tweets from the db
   loadTweets();
 
-  // Event handler to respond when a tweeter's avatar is clicked on their respective tweet
-  // which will open a modal pop-up to get a larger image
+  /* Event handler to respond when a tweeter's avatar is clicked on their respective tweet
+   which will open a modal pop-up to get a larger image */
   $(document).on('click', ".div-avatar", function (e) {
-    
     const dataid = e.target.id;
     let obj = largeImages.find(function(e) {
       return e.id === dataid;
     });
-    console.log(obj.source);
     $("#large-avatar").attr('src', obj.source);
     $(".modal").css('visibility', 'visible');
-
   });
 
   /* Event handler to close the modal dialog when X button is clicked and reset the default
    image to the dummy image */
   $(document).on('click', '.close', function(e) {
-    console.log("close button line 118");
     $(".modal").css('visibility', 'hidden');
     $("#large-avatar").attr('src', 'https://dummyimage.com/1/000000/0011ff');
   })
 });
 
 $(function() {
-  /* Create event handlers that handle the compose button click, 
+  /* The below functions are event handlers that handle the compose button click, 
   which toggles the compose-tweet section sliding off-screen /sliding down on screen*/
   
   // When the page loads, ensure that the compose tweet section is hidden
@@ -168,7 +162,7 @@ $(function() {
     /** This function handles when the 'like' icon is clicked, and should
      * access a function that updates the db w/ a like count. We do this by
      * accessing the id attribute of the element that was clicked, found 
-     * in the event "e" arguments id properties
+     * in the event "e" arguments id property
      */
     const data_id = e.target.id;
     likeTweet(data_id);

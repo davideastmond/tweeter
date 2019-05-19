@@ -26,22 +26,18 @@ module.exports = function makeDataHelpers(db) {
       })
     },
 
-      // handles like increment / decrement
-      toggleLikeCount: function(idToUpdate, callback) {
       // This essentially toggles the like count. If it's 1, make it 0 and vice versa
+      toggleLikeCount: function(idToUpdate, callback) {
       
       db.collection("tweets").find({'_id': ObjectID(idToUpdate)}).toArray((err, result) => {
         if (err) throw err;
         result[0].likes > 0 ? bumpLikes(db, idToUpdate, -1) : bumpLikes(db, idToUpdate, 1); 
         callback(null, true);
       });
-      // db.collection("tweets").update({'_id': ObjectID(idToUpdate) }, {$inc: { likes: 1}}, function(err, res) {
-      //   if (err) throw err;
-      //   callback(null, true);
-      // });
     }
   };
 }
+
 function bumpLikes(db, id, amount) {
   /* helper function that increases or decreases the like count on a tweet */
   db.collection("tweets").update({ '_id': ObjectID(id)}, { $inc: { likes: amount}}, function(err, result) {

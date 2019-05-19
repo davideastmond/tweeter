@@ -131,10 +131,12 @@ $(document).ready(function() {
 
   });
 
-  // Event handler to close the modal dialog when X button is clicked
+  /* Event handler to close the modal dialog when X button is clicked and reset the default
+   image to the dummy image */
   $(document).on('click', '.close', function(e) {
     console.log("close button line 118");
     $(".modal").css('visibility', 'hidden');
+    $("#large-avatar").attr('src', 'https://dummyimage.com/1/000000/0011ff');
   })
 });
 

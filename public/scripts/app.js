@@ -1,3 +1,4 @@
+"use strict";
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
@@ -13,36 +14,62 @@ function createTweetElement (fromData) {
   /* takes in a tweet object and is responsible for returning a tweet <article> element containing 
   the entire HTML structure of the tweet.
   The tweet data object that the function will take will have all the necessary tweet data:
-  */
 
+  We'll call helper function to compose each part of the tweet
+  */
 
   const $tweet = $("<article>");
   $tweet.empty(); 
   $tweet.addClass("tweet");
 
-  const $header = $("<header>").addClass("header");
-  $header.addClass("header-float");
+  // - HEADER
+  const $header = createTweetHeader(fromData);
+  
+  // - TEXTBODY
+  const $bodyText = createTweetTextContainer(fromData);
+  
+  // - FOOTER
+  const $tweetFooter = createTweetFooter(fromData);
+ 
+  // Append all components to the article then return it
+  $tweet.append($header, $bodyText, $tweetFooter);
+
+  return $tweet;
+}
+
+function createTweetHeader(data) {
+  /* Create the tweet header by composing avatar, user name and twitter handle and returning
+  a file header object*/
+  const $tweetHeader = $("<header>").addClass("header");
+  $tweetHeader.addClass("header-float");
 
   const $avatarDiv = $("<div>").addClass("div-avatar");
   const $avatar = $("<img>");
   $avatar.addClass("avatar")
-  $avatar.attr("id", fromData._id);
-  $avatar.attr('src', fromData.user.avatars.small);
+  $avatar.attr("id", data._id);
+  $avatar.attr('src', data.user.avatars.small);
 
   $avatarDiv.append($avatar);
     
-  const $displayName = $("<h2>", {text: `${fromData.user.name}`});
+  const $displayName = $("<h2>", {text: `${data.user.name}`});
   $displayName.addClass("display-name");
   $displayName.addClass("tweet-name-hover");
 
-  const $twitterHandleAside = $("<aside>", {text: `${fromData.user.handle}`}).addClass("twitter-handle");
+  const $twitterHandleAside = $("<aside>", {text: `${data.user.handle}`}).addClass("twitter-handle");
   $twitterHandleAside.addClass("twitter-handle-hover");
   
-  $header.append($avatarDiv, $displayName, $twitterHandleAside);
+  $tweetHeader.append($avatarDiv, $displayName, $twitterHandleAside);
+  return $tweetHeader;
+}
 
-  const $bodyText = $("<p>", {text: `${fromData.content.text}`}).addClass("tweet-text");
+function createTweetTextContainer(data) {
+  /* Composes the textbody of the tweet and returns an object */
+  const $bodyText = $("<p>", {text: `${data.content.text}`}).addClass("tweet-text");
+  return $bodyText;
+}
+
+function createTweetFooter(data) {
   const $tweetFooter = $("<footer>").addClass("footer");
-
   // Date stamp
   const dateStamp = new Date(fromData.created_at);
   const $dateTimeAgo = $("<a>", {text: `${dateStamp.toDateString()}`}).addClass("tweet-date");
@@ -50,46 +77,38 @@ function createTweetElement (fromData) {
   // Create a div w/ heart, retweet and flag icons and append to the footer
   const $iconsDiv = $("<div>").addClass("flags").addClass("hover-float");
   const $heartIcon = $("<i>").addClass("fas").addClass("fa-heart");
+
+  $heartIcon.attr('id', data._id);
+
   const $retweetIcon = $("<i>").addClass("fas").addClass("fa-retweet");
   const $flagIcon = $("<i>").addClass("fas").addClass("fa-flag");
-
-  let likeCount = 0;
-  if (fromData.likes) {
-    likeCount = fromData.likes;
-  }
-  const $likesCounterInteger = $("<a>", {text:`${likeCount}`}).addClass("like-counter-integer");
-
-  // add a css tag to hide the tweet if like count is 0
-  if (Number(fromData.likes) < 1) {
-    $likesCounterInteger.addClass("fa-heart-invisible");
-  }
-  $heartIcon.attr('id', fromData._id);
-
-  // keep track of large image reference
-  let imageReference = {id: fromData._id, source: fromData.user.avatars.large};
-  largeImages.push(imageReference);
+  const $likesCounterInteger = calculateLikeCount(data);
 
   $iconsDiv.append($heartIcon, $likesCounterInteger, $retweetIcon, $flagIcon);
   $tweetFooter.append($dateTimeAgo, $iconsDiv);
 
-  // Append all components to the article then return it
-  $tweet.append($header, $bodyText, $tweetFooter);
-
-  return $tweet;
+  return $tweetFooter;
 }
 
-function createTweetHeader() {
-
+function trackLargeImagesForTweets(data) {
+  /* Each tweet, keep track of the user's big image for the enlarged image view */
+  let imageReference = {id: data._id, source: data.user.avatars.large};
+  largeImages.push(imageReference);
 }
 
-function createTweetTextContainer() {
+function calculateLikeCount(data) {
+  let likeCount = 0;
+  if (data.likes) {
+    likeCount = fromData.likes;
+  }
+  const $likesCounterInteger = $("<a>", {text:`${likeCount}`}).addClass("like-counter-integer");
 
+  // add a css tag to hide the heart if like count is 0
+  if (Number(data.likes) < 1) {
+    $likesCounterInteger.addClass("fa-heart-invisible");
+  }
+  return $likesCounterInteger;
 }
-
-function createTweetFooter() {
-  
-}
-
 function renderTweets(arrObjTweets) {
   /** This function can be responsible for taking in an array of tweet objects and then 
    appending each one to the #tweets-container.

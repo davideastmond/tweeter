@@ -27,7 +27,6 @@ $(document).ready(function() {
       $tweetButton.attr("disabled", false);
     } else {
       $counterElement.addClass("too-long");
-      $tweetButton.attr("disabled", true);
     }
   });
 
@@ -43,7 +42,6 @@ $(document).ready(function() {
       $tweetButton.attr("disabled", false);
     } else {
       $counterElement.addClass("too-long");
-      $tweetButton.attr("disabled", true);
     }
   });
 
@@ -61,7 +59,6 @@ $(document).ready(function() {
       $tweetButton.attr("disabled", false);
     } else {
       $counterElement.addClass("too-long");
-      $tweetButton.attr("disabled", true);
     }
   });
 
@@ -116,6 +113,7 @@ function showErrorMessage(errText) {
      $divError.animate({opacity: 1}, 200);
    });
 }
+
 function hideErrorMessage() {
   /* Hides the error message ( to be implemented when user starts typing in the 
    text area). */

@@ -1,183 +1,63 @@
-/* nav-related CSS stylings */
-@media (min-width: 950px) {
-  #nav-bar {
-    background-color: #00a087;
-    color: #e8fdff;
-    height: 80px;
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-top: .5em;
-    width: 100%;
-  }
 
-  #nav-bar .header {
-    float: left;
-    font-size: 2em;
-    line-height: 80px;
-    position: relative;
-    padding-left: 10px;
-  }
-  
-  .logo {
-    float: left;
-    height: 80px;
-    max-width: 100%;
-    width: 80px;
-   }
-  
-  .toggle-button {
-    background-color: #e6f2ff;
-    border-radius: 3px;
-    border-color: black;
-    border-style: solid;
-    border-width: .1em;
-    color: #99bbff;
-    float: right;
-    height: auto;
-    padding: 20px;
-    position: relative;
-    text-align: center;
-    transition-duration: 0.4s;
-    vertical-align: center;
-    width: auto;
-    -webkit-transistion-duration:0.4s; /* Safari */
-  }
-
-  .toggle-button:hover {
-    background-color: #99caff;
-    box-shadow: 1px 1px 2px grey;
-    color: beige;
-    cursor: pointer;
-  }
-
-  .toggle-button:after {
-    background: #90EE90;
-    opacity: 0;
-    transition: all 0.8s;
-  }
-
-  .toggle-button:active:after {
-    opacity: 1;
-    transition:0s;
-  }
+#nav-bar {
+  background-color: #00a087;
+  color: #e8fdff;
+  height: 80px;
+  margin-bottom: 2%;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-top: .5em;
+  width: 100%;
 }
 
-@media (min-width: 400px) and (max-width: 949px) {
-  #nav-bar {
-    background-color: #00a087;
-    color: #e8fdff;
-    height: 70px;
-    padding-left: 5%;
-    padding-right: 2em;
-    padding-top: .5em;
-    width: 100%;
-  }
-
-  #nav-bar .logo {
-    float: left;
-    height: 80px;
-    width: 80px;
-    padding-bottom: .5em;
-    border-right: .5em;
-  }
-
-  #nav-bar .header {
-    float: left;
-    font-size: 2em;
-    line-height: 80px;
-    position: relative;
-    padding-left: 10px;
-  }
-
-  .toggle-button {
-    background-color: #e6f2ff;
-    border-radius: 3px;
-    border-color: black;
-    border-style: solid;
-    border-width: .1em;
-    color: #99bbff;
-    float: right;
-    height: auto;
-    padding: 20px;
-    position: relative;
-    text-align: center;
-    transition-duration: 0.4s;
-    width: auto;
-  }
-
-  .toggle-button:hover {
-    background-color: #99caff;
-    box-shadow: 1px 1px 2px grey;
-    color: beige;
-    cursor: pointer;
-  }
-
-  .toggle-button:after {
-    background: #90EE90;
-    opacity: 0;
-    transition: all 0.8s;
-  }
-
-  .toggle-button:active:after {
-    opacity: 1;
-    transition:0s;
-  }
+#nav-bar .header {
+  float: left;
+  font-size: 2em;
+  line-height: 80px;
+  position: relative;
+  padding-left: 10px;
 }
 
-@media (min-width: 0px) and (max-width: 400px) {
-  #nav-bar {
-    background-color: #00a087;
-    color: #e8fdff;
-    height: 70px;
-    margin-top: 0%;
-    padding-right: 0px;
-    padding-top: 1px;
-    width: 100%;
-    vertical-align: center;
-    padding-bottom: 1px;
+.logo {
+  float: left;
+  height: 80px;
+  max-width: 100%;
+  width: 80px;
   }
 
-  .logo {
-    float: left;
-    height: 60px;
-    width: 60px;
-    padding-right: .5em;
-  }
-
-  .toggle-button {
-    background-color: #e6f2ff;
-    border-radius: 3px;
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
-    color: #99bbff;
-    height: auto;
-    padding: 20px;
-    position: relative;
-    text-align: center;
-    transition-duration: 0.4s;
-    width: auto;
-  }
- 
-  .toggle-button:hover {
-    background-color: #99caff;
-    box-shadow: 1px 1px 2px grey;
-    color: beige;
-    cursor: pointer;
-  }
-
-  .toggle-button:after {
-    background: #90EE90;
-    opacity: 0;
-    transition: all 0.8s;
-  }
-
-  .toggle-button:active:after {
-    opacity: 1;
-    transition:0s;
-  }
-
-  .container {
-    margin-left: 0%; 
-  }
+.toggle-button {
+  background-color: #e6f2ff;
+  border-radius: 3px;
+  border-color: black;
+  border-style: solid;
+  border-width: .1em;
+  color: #99bbff;
+  float: right;
+  height: auto;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+  transition-duration: 0.4s;
+  vertical-align: center;
+  width: auto;
+  -webkit-transistion-duration:0.4s; /* Safari */
 }
+
+.toggle-button:hover {
+  background-color: #99caff;
+  box-shadow: 1px 1px 2px grey;
+  color: beige;
+  cursor: pointer;
+}
+
+.toggle-button:after {
+  background: #90EE90;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.toggle-button:active:after {
+  opacity: 1;
+  transition:0s;
+}
+

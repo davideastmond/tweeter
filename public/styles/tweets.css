@@ -1,9 +1,9 @@
+
 #tweet-container {
-  background-color: whitesmoke;
+  background-color: white;
   border-radius: 3px;
-  height: auto;
-  padding: .5em;
 }
+
 
 .tweet .header {
   background-color: #e6f2ff;
@@ -19,6 +19,11 @@
   text-align: right;
   float:right;
 }
+.tweet-sep {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: black;
+}
 
 .tweet .display-name {
   color: #cccccc;
@@ -27,12 +32,21 @@
   width: auto;
 }
 
-.tweet .avatar {
+.avatar {
   border-radius: 3px;
   border: solid 1px black;
   float: left;
   height: 60px;
+  margin-bottom: 2%;
   width: 60px;
+}
+.tweet {
+  margin-top: 2%;
+  border-top: 5px;
+  border-radius: 3px;
+  border: 3px;  
+  padding-bottom: 2px;
+
 }
 
 .avatar:hover {
@@ -41,7 +55,7 @@
 
 .tweet:hover .hover-float {
   display: block;
-}
+} 
 
 .tweet:hover .header-float {
   background-color: #cce6ff;
@@ -56,28 +70,33 @@
 }
 
 .footer .flags {
+  border-radius: 3px;
   display: none;
   height: 4em;
+  margin: 1%;
   object-fit: contain;
   width: 5.5em;
+  padding: 2px;
 }
 
 .invisible {
   display: none;
 }
+
 .footer {
   background-color: cornsilk;
   height: 2em;
-  padding: 1.5px;
+  padding: 2%;
 }
 
 .tweet-text {
   word-wrap: break-word;
+  background-color: white;
+  padding: 1px;
 }
 
-.fa-heart {
-  text-align: left;
-  float: left;
+.fas {
+  border-top: 0px;
 }
 
 .fa-heart-invisible {
@@ -101,7 +120,7 @@
   height: 100%; 
   left: 0px;
   overflow: auto; 
-  padding-top: 100px; /* Location of the box */
+  padding-top: 100px; 
   position: fixed; 
   text-align: center;
   top: 0px;
@@ -124,7 +143,6 @@
   margin:10%;
   size: 100%;
 }
-
 
 .close:hover {
   cursor: pointer;

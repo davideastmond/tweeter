@@ -15,6 +15,7 @@ function createTweetElement (fromData) {
   The tweet data object that the function will take will have all the necessary tweet data:
   */
 
+
   const $tweet = $("<article>");
   $tweet.empty(); 
   $tweet.addClass("tweet");
@@ -75,6 +76,18 @@ function createTweetElement (fromData) {
   $tweet.append($header, $bodyText, $tweetFooter);
 
   return $tweet;
+}
+
+function createTweetHeader() {
+
+}
+
+function createTweetTextContainer() {
+
+}
+
+function createTweetFooter() {
+  
 }
 
 function renderTweets(arrObjTweets) {

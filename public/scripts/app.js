@@ -71,7 +71,7 @@ function createTweetTextContainer(data) {
 function createTweetFooter(data) {
   const $tweetFooter = $("<footer>").addClass("footer");
   // Date stamp
-  const dateStamp = new Date(fromData.created_at);
+  const dateStamp = new Date(data.created_at);
   const $dateTimeAgo = $("<a>", {text: `${dateStamp.toDateString()}`}).addClass("tweet-date");
 
   // Create a div w/ heart, retweet and flag icons and append to the footer
@@ -99,7 +99,7 @@ function trackLargeImagesForTweets(data) {
 function calculateLikeCount(data) {
   let likeCount = 0;
   if (data.likes) {
-    likeCount = fromData.likes;
+    likeCount = data.likes;
   }
   const $likesCounterInteger = $("<a>", {text:`${likeCount}`}).addClass("like-counter-integer");
 
@@ -120,7 +120,7 @@ function renderTweets(arrObjTweets) {
   $("#tweet-container").empty();
   largeImages = [];
   for (let tweetElement of arrObjTweets) {
-    $individualTweet = createTweetElement(tweetElement);
+    let $individualTweet = createTweetElement(tweetElement);
     $("#tweet-container").prepend($individualTweet);
   }
 }

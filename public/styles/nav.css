@@ -100,9 +100,9 @@
     height: auto;
     padding: 20px;
     position: relative;
-    width: auto;
     text-align: center;
     transition-duration: 0.4s;
+    width: auto;
   }
 
   .toggle-button:hover {

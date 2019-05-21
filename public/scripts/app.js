@@ -52,7 +52,11 @@ function createTweetElement (fromData) {
   const $retweetIcon = $("<i>").addClass("fas").addClass("fa-retweet");
   const $flagIcon = $("<i>").addClass("fas").addClass("fa-flag");
 
-  const $likesCounterInteger = $("<a>", {text:`${fromData.likes}`}).addClass("like-counter-integer");
+  let likeCount = 0;
+  if (fromData.likes) {
+    likeCount = fromData.likes;
+  }
+  const $likesCounterInteger = $("<a>", {text:`${likeCount}`}).addClass("like-counter-integer");
 
   // add a css tag to hide the tweet if like count is 0
   if (Number(fromData.likes) < 1) {

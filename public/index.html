@@ -50,6 +50,7 @@
             <form action="/tweets" method="POST" id="tweet-form">
               <textarea id="tweet-text" name="text" placeholder="What are you humming about?"></textarea>
               <input type="submit" value="Tweet" id="tweet-button">
+              <input type="hidden" value="0" name="initial-like-count">
               <div id="div-error">
                 <i class="fas fa-exclamation-circle"></i>
                 <a id="error-message" class="non-blinking"> Sample Error </a>

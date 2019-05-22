@@ -72,7 +72,8 @@ function createTweetFooter(data) {
   const $tweetFooter = $("<footer>").addClass("footer");
   // Date stamp
   const dateStamp = new Date(data.created_at);
-  const $dateTimeAgo = $("<a>", {text: `${dateStamp.toDateString()}`}).addClass("tweet-date");
+  const dateStampString = dateDiff(dateStamp);
+  const $dateTimeAgo = $("<a>", {text: `${dateStampString}`}).addClass("tweet-date");
 
   // Create a div w/ heart, retweet and flag icons and append to the footer
   const $iconsDiv = $("<div>").addClass("flags").addClass("hover-float");
@@ -97,6 +98,8 @@ function trackLargeImagesForTweets(data) {
 }
 
 function calculateLikeCount(data) {
+  /* Determines how to display like counts. Hides it if the count is 0
+  otherwise makes it visible*/
   let likeCount = 0;
   if (data.likes) {
     likeCount = data.likes;
@@ -150,6 +153,31 @@ function likeTweet(to_id) {
   })
 }
 
+function dateDiff (timeStamp) {
+  /* Calculates the elapsed time as per a given date stamp 
+  and returns a friendly string */
+  const now = new Date();
+
+  let diff = now - timeStamp; 
+  diff /= 1000; 
+
+  let seconds = Math.round(diff);
+  
+  if (seconds <= 60) {
+    return `${seconds} second(s) ago`;
+  } else if ( seconds > 60 && seconds <= 3600) {
+    return `${Math.round(seconds / 60)} minute(s) ago`;
+  } else if (seconds > 3600 && seconds <= 86400) {
+    return `${Math.round(seconds / 3600)} hour(s) ago`;
+  } else if (seconds > 86400 && seconds <= 2592000) {
+    return `${Math.round(seconds / 86400)} day(s) ago`;
+  } else if (seconds > 2592000 && seconds <= 31104000) {
+    return `${Math.round(seconds / 2592000)} month(s) ago`;
+  } else {
+    return `${Math.round(seconds / 31104000)} year(s) ago`;
+  }
+}
+
 $(document).ready(function() {
   // Form is ready to be loaded - immediately show tweets from the db
   loadTweets();
@@ -171,9 +199,7 @@ $(document).ready(function() {
     $(".modal").css('visibility', 'hidden');
     $("#large-avatar").attr('src', 'https://dummyimage.com/1/000000/0011ff');
   })
-});
 
-$(function() {
   /* The below functions are event handlers that handle the compose button click, 
   which toggles the compose-tweet section sliding off-screen /sliding down on screen*/
   

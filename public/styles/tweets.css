@@ -5,6 +5,9 @@
   padding: 1em;
 }
 
+.fa {
+  line-height: 1px;
+}
 .tweet .header {
   align-items: center;
   background-color: #e6f2ff;
@@ -26,7 +29,7 @@
 }
 
 .tweet .display-name {
-  color: #cccccc;
+  color: #202328;
   float:left;
   padding-left: .1em;
   width: auto;
@@ -54,7 +57,8 @@
 }
 
 .tweet:hover .hover-float {
-  display: block;
+  display: flex;
+  float: right;
 } 
 
 .tweet:hover .header-float {
@@ -69,14 +73,24 @@
   color: #434d56;
 }
 
+.flags .hover-float {
+  float: right;
+  margin: 3%;
+  visibility: visible;
+}
+
+.fas .fa-retweet {
+  margin: 3%;
+  padding: 1%;
+}
+
 .footer .flags {
   border-radius: 3px;
   display: none;
+  justify-content: space-between;
   height: 4em;
-  margin: 1%;
-  object-fit: contain;
   width: 5.5em;
-  padding: 2px;
+  padding: 0px;
 }
 
 .invisible {
@@ -87,7 +101,7 @@
   background-color: cornsilk;
   display: flex;
   height: 2em;
-  justify-content: left;
+  justify-content: space-between;
   padding: 2%;
 }
 
@@ -97,9 +111,6 @@
   padding: 1em;
 }
 
-.fas {
-  border-top: 0px;
-}
 
 .fa-heart-invisible {
   display: none;

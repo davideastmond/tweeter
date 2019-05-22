@@ -6,8 +6,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["Screenshot: Tweets"](https://github.com/davideastmond/tweeter/blob/master/public/images/tweeter_01.png)
-!["Screenshot: Compose Tweet"](https://github.com/davideastmond/tweeter/blob/master/public/images/tweeter_02.png)
+!["Screenshot: Tweets"](https://github.com/davideastmond/tweeter/blob/master/public/images/sstweet00.png)
+!["Screenshot: Compose Tweet"](https://github.com/davideastmond/tweeter/blob/master/public/images/sstweet01.png)
 
 ### Features
 

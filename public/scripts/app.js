@@ -163,7 +163,9 @@ function dateDiff (timeStamp) {
 
   let seconds = Math.round(diff);
   
-  if (seconds <= 60) {
+  if (seconds >= 0 && seconds <= 10) {
+    return 'Just now';
+  } else if (seconds > 10 && seconds <= 60) {
     return `${seconds} second(s) ago`;
   } else if ( seconds > 60 && seconds <= 3600) {
     return `${Math.round(seconds / 60)} minute(s) ago`;

@@ -72,7 +72,7 @@ $(document).ready(function() {
       showErrorMessage("Tweet must be 140 chars or less.");
       return;
     }
-    if ($("#tweet-text").val().length === 0) {
+    if ($("#tweet-text").val().trim().length === 0) {
       showErrorMessage("Please enter tweet text.");
       return;
     }
